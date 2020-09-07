@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Executor</title>
+		<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/dropdown.css">
+		<link rel="stylesheet" type="text/css" href="css/estilos.css">
+	</head>
+	<body>
+		<div class="cabecalho">
+			<a id="logo" href="index.html">
+				<img src="img/swf_player_icon.png" alt="Swf Player Games" width="auto" height="50">
+			</a>
+			<a href="index.html">
+				<button class="dropbtn">Início</button>
+			</a>
+			<div class="dropdown">
+			  	<button class="dropbtn">Jogos</button>
+			    <div class="dropdown-content">
+			    	<!--<a data-value="jogos/Knight Elite.swf">Link 1</a>
+			    	<a data-value="jogos/Hack Slash Crawl.swf">Link 2</a>
+			    	<a data-value="jogos/Age of War.swf">Link 3</a>-->
+				    <button class="game" value="jogos/Knight Elite.swf">Knight Elite</button>
+				    <button class="game" value="jogos/Hack Slash Crawl.swf">Hack Slash Crawl</button>
+				    <button class="game" value="jogos/Age of War.swf">Age of War</button>
+				</div>
+			</div>
+		</div>
+
+		<script>
+			$(".game").click(function(){
+				//localStorage.setItem("nomeJogo",$(this).data("value"));
+				localStorage.setItem("nomeJogo",this.value);
+				window.location.href = 'leitor.html';
+		    	//window.open("leitor.html", "Executando Jogo", "width=822,height=622");
+		    });
+		</script>
+
+		<embed id="interface" src="" quality="high" type="application/x-shockwave-flash" width="800" height="600" pluginspage="http://www.macromedia.com/go/getflashplayer" />
+	    <script type="text/javascript">
+			//alert(localStorage.getItem("nomeJogo"));
+			var jogo = localStorage.getItem("nomeJogo");
+			var interface=document.getElementById("interface");
+			var clone=interface.cloneNode(true);
+			clone.setAttribute('src',jogo);
+			interface.parentNode.replaceChild(clone,interface);
+		</script>
+	</body>
+</html>
